@@ -11,7 +11,14 @@ const MONGOURL = process.env.MONGO_URL;
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+// Updated CORS Configuration
+const corsOptions = {
+    origin: ["https://smit-hackathon-project.netlify.app"], // Add frontend origin here
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Include cookies if necessary
+};
+app.use(cors(corsOptions));
 
 // MongoDB Connection
 mongoose
@@ -26,8 +33,10 @@ mongoose
 // Routes
 app.use("/auth", authroutes);
 
+app.options("*", cors(corsOptions)); // Handle preflight requests
+
 app.get("/", (req, res) => {
-    res.json({ meessage: "Server Running" });
+    res.json({ message: "Server Running" });
 });
 
 // Start the server
