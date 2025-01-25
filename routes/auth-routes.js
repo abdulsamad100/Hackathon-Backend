@@ -15,6 +15,13 @@ const userSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model("users", userSchema)
 
+router.get("/login", async (req,res)=>{
+    res.json({message:"login running"})
+})
+router.get("/signup", async (req,res)=>{
+    res.json({message:"signup running"})
+})
+
 router.post("/login", async (req, res) => {
     const loginData = req.body
     console.log("login trigger");
