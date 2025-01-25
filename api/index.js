@@ -7,7 +7,7 @@ const { authroutes } = require("../routes/auth-routes");
 dotenv.config();
 
 const app = express();
-const MONGOURL = process.env.MONGO_URL;
+const MONGOURL = "mongodb+srv://test:test123@hackathon.ggr0o.mongodb.net/hackathon";
 
 // Middleware
 app.use(express.json());
